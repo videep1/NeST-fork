@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 class Bird(RoutingHelper):
     def _create_directory(self, dir_path):
         """
-        Creates a quagga/frr owned directory at `dir_path`
+        Creates a bird owned directory at `dir_path`
 
         Parmeters
         ---------

@@ -180,14 +180,14 @@ class RoutingHelper:
                 return
         else:
             try:
-                # Warning for using ISIS daemons along with other daemons
+                # Warning for using ISIS or other daemons along with other daemons
                 # since they interfere with other routing daemons (which may
                 # or may not be of ISIS)
                 if (config.get_value("routing_suite") == "frr"):
-                    #logger.warning(
-                    #    "ISIS routing protocol in quagga might overwrite "
-                    #    "previously assigned routes by other RoutingHelpers"
-                    #)
+                    logger.warning(
+                        "ISIS or other routing protocol in frr  might overwrite "
+                        "previously assigned routes by other RoutingHelpers"
+                    )
                     frr= Frr(self.protocol,
                         self.ipv6_routing,
                         self.hosts,

@@ -147,7 +147,7 @@ class RoutingHelper:
         if self.protocol == "static":
             static_routing = StaticRouting()
             static_routing.run_static_routing()
-        elif config.get_value("routing_suite") == "bird":
+        elif (config.get_value("routing_suite") == "bird"):
             try:
                 bird= Bird(self.protocol,
                         self.ipv6_routing,
@@ -158,8 +158,7 @@ class RoutingHelper:
                 bird._run_dyn_routing_bird()
             except RequiredDependencyNotFound:
                 return
-        elif((self.protocol == "isis" or self.protocol == "ospf" or self.protocol == "rip")
-                    and config.get_value("routing_suite") == "quagga"):
+        elif(config.get_value("routing_suite") == "quagga"):
             try:
                 # Warning for using ISIS daemons along with other daemons
                 # since they interfere with other routing daemons (which may
@@ -184,10 +183,7 @@ class RoutingHelper:
                 # Warning for using ISIS daemons along with other daemons
                 # since they interfere with other routing daemons (which may
                 # or may not be of ISIS)
-                if (
-                    (self.protocol == "isis" or self.protocol == "ospf" or self.protocol == "rip")
-                    and config.get_value("routing_suite") == "frr"
-                ):
+                if (config.get_value("routing_suite") == "frr"):
                     #logger.warning(
                     #    "ISIS routing protocol in quagga might overwrite "
                     #    "previously assigned routes by other RoutingHelpers"
